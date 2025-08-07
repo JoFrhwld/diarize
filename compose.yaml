@@ -1,0 +1,6 @@
+services:
+  diarize:
+    image: diarize
+    build:
+      context: .
+      dockerfile: ./Dockerfile
