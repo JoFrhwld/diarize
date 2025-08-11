@@ -78,6 +78,8 @@ def make_atg(diarization:Annotation)->AlignedTextGrid:
   Diar, = custom_classes(["Diar"])
   for turn, id, speaker in diarization.itertracks(yield_label=True):
     logger.debug(f"{turn.start}, {turn.end}, {id}, {speaker}")
+    if (turn.end - turn.start) < 0.02:
+      continue
     if not speaker in tiers:
       logger.debug(f"Adding tier for {speaker}")
       stier = SequenceTier(entry_class=Diar)
@@ -205,7 +207,7 @@ def write_eaf(atg:AlignedTextGrid, out_path:Path|str, audio_file: Path|str) -> N
 @click.option(
   "--min_speakers",
   default = 2,
-  type = click.IntRange(2,10)
+  type = click.IntRange(1,10)
 )
 @click.option(
   "--max_speakers",
