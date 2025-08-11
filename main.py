@@ -155,8 +155,16 @@ def coallece(atg: AlignedTextGrid):
 
       elif iso_speech:
         logger.debug(f"Popping interval of duration {interval.duration:.03}")
-        interval.fuse_leftward()
-        interval.fuse_rightward()
+        try:
+          interval.fuse_leftward()
+        except Exception as e:
+          logger.error("Leftward error")
+          logger.error(e.with_traceback)
+        try:
+          interval.fuse_rightward()
+        except Exception as e:
+          logger.error("Rightward error")
+          logger.error(e.with_traceback)
         interval.label = ""
         continue
 
