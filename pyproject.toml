@@ -5,11 +5,12 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "aligned-textgrid>=0.8.1",
     "click>=8.2.1",
     "dotenv>=0.9.9",
+    "librosa>=0.11.0",
     "pyannote-audio>=3.3.2",
     "pympi-ling",
-    "torchaudio>=2.8.0",
 ]
 
 [tool.uv.sources]
