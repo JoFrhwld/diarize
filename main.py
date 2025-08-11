@@ -78,6 +78,8 @@ def make_atg(diarization:Annotation)->AlignedTextGrid:
   Diar, = custom_classes(["Diar"])
   for turn, id, speaker in diarization.itertracks(yield_label=True):
     logger.debug(f"{turn.start}, {turn.end}, {id}, {speaker}")
+    if (turn.end - turn.start) < 0.02:
+      continue
     if not speaker in tiers:
       logger.debug(f"Adding tier for {speaker}")
       stier = SequenceTier(entry_class=Diar)
