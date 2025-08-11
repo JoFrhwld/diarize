@@ -205,7 +205,7 @@ def write_eaf(atg:AlignedTextGrid, out_path:Path|str, audio_file: Path|str) -> N
 @click.option(
   "--min_speakers",
   default = 2,
-  type = click.IntRange(2,10)
+  type = click.IntRange(1,10)
 )
 @click.option(
   "--max_speakers",
