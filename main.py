@@ -190,7 +190,8 @@ def write_eaf(atg:AlignedTextGrid, out_path:Path|str, audio_file: Path|str) -> N
         eaf.add_annotation(
           id_tier = f"Speaker-{idx}",
           start = int(interval.start * 1000),
-          end = int(interval.end * 1000)
+          end = int(interval.end * 1000),
+          value = interval.label
         )
   eaf.remove_tier(id_tier = "default")
   if audio_file:
