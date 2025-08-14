@@ -184,7 +184,7 @@ def write_eaf(atg:AlignedTextGrid, out_path:Path|str, audio_file: Path|str) -> N
   logger.info("Writing diarization")
   n_annotations = np.array([
     len(tg[0])
-    for tg in atg
+    for tg in atg.tier_groups
   ])
   for idx in n_annotations.argsort():
     tg = atg[idx]
