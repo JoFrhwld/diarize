@@ -182,7 +182,7 @@ def coallece(atg: AlignedTextGrid):
 def write_eaf(atg:AlignedTextGrid, out_path:Path|str, audio_file: Path|str) -> None:
   eaf = pympi.Eaf()
   logger.info("Writing diarization")
-  n_annotations = np.array([
+  n_annotations = -np.array([
     len(tg[0])
     for tg in atg.tier_groups
   ])
