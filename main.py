@@ -187,11 +187,11 @@ def write_eaf(atg:AlignedTextGrid, out_path:Path|str, audio_file: Path|str) -> N
     for tg in atg.tier_groups
   ])
   for idx in n_annotations.argsort():
-    tg = atg[idx]
+    tg = atg.tier_groups[int(idx)]
     tier = tg[0]
     eaf.add_tier(tier_id=f"Speaker-{idx}")
     for interval in tier:
-      if len(interval.label) > 0:
+      if len(str(interval.label)) > 0:
         eaf.add_annotation(
           id_tier = f"Speaker-{idx}",
           start = int(interval.start * 1000),
